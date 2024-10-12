@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/widgets/task_list.dart';
 
 class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
@@ -41,40 +42,11 @@ class TasksScreen extends StatelessWidget {
               SizedBox(
                 height: 40.0,
               ),
+
+              TaskList(),
+
               Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20.0),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2), // Shadow color
-                      spreadRadius: 2, // How far the shadow spreads
-                      blurRadius: 3, // How blurry the shadow looks
-                      offset: Offset(0,
-                          2), // Changes position of shadow (horizontal, vertical)
-                    ),
-                  ],
-                ),
-                child: Container(
-                  padding: EdgeInsets.only(
-                      top: 25.0, left: 20.0, right: 20.0, bottom: 25.0),
-                  child: Row(
-                    children: [
-                      // Icon(icons),
-                      Text(
-                        "This is an simple task",
-                        style: TextStyle(
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Spacer(),
-              Container(
+                margin: EdgeInsets.only(top: 25.0),
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: (){
@@ -102,3 +74,5 @@ class TasksScreen extends StatelessWidget {
     );
   }
 }
+
+
