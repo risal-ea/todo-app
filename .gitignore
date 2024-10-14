@@ -1,43 +1,68 @@
-# Miscellaneous
-*.class
-*.log
-*.pyc
-*.swp
-.DS_Store
-.atom/
-.buildlog/
-.history
-.svn/
-migrate_working_dir/
-
-# IntelliJ related
-*.iml
-*.ipr
-*.iws
-.idea/
-
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
-
 # Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
+.packages
 .pub-cache/
 .pub/
-/build/
+build/
+android/.gradle/
+android/app/libs/
+**/android/**/gradle-wrapper.jar
 
-# Symbolication related
-app.*.symbols
+# Android related
+/app/.cxx/
+local.properties
+**/android/**/GeneratedPluginRegistrant.java
+**/android/**/GeneratedPluginRegistrant.h
+android/.gradle/
+android/captures/
+android/gradlew
+android/gradlew.bat
 
-# Obfuscation related
-app.*.map.json
+# iOS related
+ios/Flutter/Flutter.podspec
+ios/.symlinks/
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/Generated.xcconfig
+**/ios/**/GeneratedPluginRegistrant.*
+**/ios/**/Pods/
+ios/.generated/
 
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
+# Web related
+web/.dart_tool/
+web/.packages
+web/build/
+
+# macOS related
+macos/Flutter/ephemeral/
+macos/.symlinks/
+macos/Pods/
+macos/Runner.xcworkspace/
+**/macos/**/GeneratedPluginRegistrant.*
+
+# Windows related
+windows/Flutter/ephemeral/
+windows/.symlinks/
+**/windows/**/GeneratedPluginRegistrant.*
+
+# Linux related
+linux/Flutter/ephemeral/
+linux/.symlinks/
+**/linux/**/GeneratedPluginRegistrant.*
+
+# General
+**/*.iml
+.idea/
+.vscode/
+*.log
+*.lock
+*.pyc
+*.pyo
+*.DS_Store
+*.dart_tool/
+*.flutter-plugins
+*.flutter-plugins-dependencies
