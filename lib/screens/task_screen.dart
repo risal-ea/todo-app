@@ -13,7 +13,7 @@ class TasksScreen extends StatelessWidget {
       body: SafeArea(
         child: Container(
           padding:
-              EdgeInsets.only(top: 40.0, left: 30.0, right: 30.0, bottom: 30.0),
+              EdgeInsets.only(top: 40.0, left: 30.0, right: 30.0,),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -47,7 +47,15 @@ class TasksScreen extends StatelessWidget {
               TaskList(),
               AddTaskButton(onPressed: () {
                 showModalBottomSheet(
-                    context: context, builder: (context) => AddTaskScreen());
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (context) => Padding(
+                          padding: EdgeInsets.only(
+                              bottom: MediaQuery.of(context).viewInsets.bottom),
+                          child: SingleChildScrollView(
+                              child: AddTaskScreen(),
+                          ),
+                        ));
               }),
             ],
           ),

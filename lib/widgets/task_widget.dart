@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 
-class Task extends StatelessWidget {
+class Task extends StatefulWidget {
   final String taskName;
 
   const Task({
     super.key,
     required this.taskName,
   });
+
+  @override
+  State<Task> createState() => _TaskState();
+}
+
+class _TaskState extends State<Task> {
+  bool isChecked = false;
+  void checkBoxCallBack(bool? newValue) {
+    setState(() {
+      isChecked = newValue!; // Update state when the checkbox is toggled
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,33 +33,53 @@ class Task extends StatelessWidget {
             color: Colors.grey.withOpacity(0.2), // Shadow color
             spreadRadius: 2, // How far the shadow spreads
             blurRadius: 3, // How blurry the shadow looks
-            offset: Offset(0,
-                2), // Changes position of shadow (horizontal, vertical)
+            offset: Offset(
+                0, 2), // Changes position of shadow (horizontal, vertical)
           ),
         ],
       ),
       child: Container(
-        padding: EdgeInsets.only(
-            top: 20.0, left: 20.0, right: 20.0, bottom: 20.0),
+        padding:
+            EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0, bottom: 20.0),
         child: Row(
           children: [
-            Transform.scale(
-              scale: 1.5,
-              child: Checkbox(
-                value: true,
-                onChanged: null,
-                activeColor: Color(0xFFB17457),
-              ),
+            TaskCheckBox(
+              checkBoxState: isChecked,
+              toggleCheckBoxState: checkBoxCallBack,
             ),
             Text(
-              taskName,
+              widget.taskName,
               style: TextStyle(
                 fontSize: 25.0,
+                decoration: isChecked ? TextDecoration.lineThrough : null,
                 fontWeight: FontWeight.w500,
+                color: isChecked? Colors.grey: null,
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class TaskCheckBox extends StatelessWidget {
+  final bool checkBoxState;
+  final Function(bool?) toggleCheckBoxState;
+
+  const TaskCheckBox(
+      {super.key,
+      required this.checkBoxState,
+      required this.toggleCheckBoxState});
+
+  @override
+  Widget build(BuildContext context) {
+    return Transform.scale(
+      scale: 1.5,
+      child: Checkbox(
+        value: checkBoxState,
+        onChanged: toggleCheckBoxState,
+        activeColor: Color(0xFFB17457),
       ),
     );
   }

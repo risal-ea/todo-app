@@ -12,7 +12,7 @@ class AddTaskButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 25.0),
+      margin: EdgeInsets.only(top: 20.0, bottom: 25.0),
       width: double.infinity,
       child: ElevatedButton(
         onPressed: onPressed,
@@ -20,7 +20,7 @@ class AddTaskButton extends StatelessWidget {
             backgroundColor: Color(0xFFB17457),
             padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0))),
+                borderRadius: BorderRadius.circular(15.0))),
         child: Text(
           "ADD TASK",
           style: TextStyle(

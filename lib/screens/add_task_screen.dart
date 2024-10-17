@@ -7,7 +7,7 @@ class AddTaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top:40.0, right: 20.0, left: 20.0),
+      padding: EdgeInsets.only(top:25.0, right: 20.0, left: 20.0),
       child: Column(
         children: [
           TextField(
@@ -18,12 +18,14 @@ class AddTaskScreen extends StatelessWidget {
                 color: Colors.grey
               ),
               enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15.0),
                 borderSide: BorderSide(
                   color: Color(0xFFB17457),
                   width: 2.0,
                 )
               ),
                 focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15.0),
                     borderSide: BorderSide(
                       color: Color(0xFFB17457),
                       width: 2.0,
