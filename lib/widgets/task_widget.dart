@@ -39,13 +39,16 @@ class TaskTile extends StatelessWidget {
               checkBoxState: isChecked,
               toggleCheckBoxState: checkboxCallback,
             ),
-            Text(
-              taskName,
-              style: TextStyle(
-                fontSize: 25.0,
-                decoration: isChecked ? TextDecoration.lineThrough : null,
-                fontWeight: FontWeight.w500,
-                color: isChecked? Colors.grey: null,
+            Expanded(
+              child: Text(
+                taskName,
+                style: TextStyle(
+                  fontSize: 25.0,
+                  decoration: isChecked ? TextDecoration.lineThrough : null,
+                  fontWeight: FontWeight.w500,
+                  color: isChecked? Colors.grey: null,
+                ),
+                softWrap: true,
               ),
             ),
           ],

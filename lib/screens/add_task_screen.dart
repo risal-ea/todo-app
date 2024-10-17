@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/components/add_task_button.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  const AddTaskScreen({super.key});
+  final TextEditingController _taskController = TextEditingController();
+  String taskText = '';
+  final Function addTaskCallback;
+
+  AddTaskScreen({super.key, required this.addTaskCallback});
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +15,7 @@ class AddTaskScreen extends StatelessWidget {
       child: Column(
         children: [
           TextField(
+            controller: _taskController,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               hintText: "I need to complete my homework.",
@@ -34,7 +39,9 @@ class AddTaskScreen extends StatelessWidget {
             ),
           ),
           AddTaskButton(onPressed: (){
-            print('button clicked');
+            taskText = _taskController.text;
+            addTaskCallback(taskText);
+            Navigator.pop(context);
           })
         ],
       ),

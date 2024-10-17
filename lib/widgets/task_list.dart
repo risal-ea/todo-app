@@ -3,8 +3,13 @@ import 'package:todo_app/widgets/task_widget.dart';
 import 'package:todo_app/models/task.dart';
 
 class TaskList extends StatefulWidget {
+  final List<Task> tasks;
+  final Function updateTaskCompletion;
+
   const TaskList({
     super.key,
+    required this.tasks,
+    required this.updateTaskCompletion,
   });
 
   @override
@@ -12,20 +17,6 @@ class TaskList extends StatefulWidget {
 }
 
 class _TaskListState extends State<TaskList> {
-  List<Task> tasks = [
-    Task(
-      name: 'wow',
-      isDone: true,
-    ),
-    Task(
-      name: 'study',
-      isDone: false,
-    ),
-    Task(
-      name: 'sleep',
-      isDone: false,
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -33,16 +24,17 @@ class _TaskListState extends State<TaskList> {
       child: ListView.builder(
         itemBuilder: (context, index) {
           return TaskTile(
-            taskName: tasks[index].name,
-            isChecked: tasks[index].isDone,
+            taskName: widget.tasks[index].name,
+            isChecked: widget.tasks[index].isDone,
             checkboxCallback: (bool? checkBoxState){
               setState(() {
-                tasks[index].toggleDone();
+                widget.tasks[index].toggleDone();
               });
+              widget.updateTaskCompletion();
             },
           );
         },
-        itemCount: tasks.length,
+        itemCount: widget.tasks.length,
       ),
     );
   }
