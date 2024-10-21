@@ -3,7 +3,10 @@ import 'package:todo_app/components/add_task_button.dart';
 import 'package:todo_app/models/task.dart';
 import 'package:todo_app/screens/add_task_screen.dart';
 import 'package:todo_app/widgets/task_list.dart';
-import 'package:todo_app/models/task.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/models/task_data.dart';
+
+
 
 class TasksScreen extends StatefulWidget {
   TasksScreen({super.key});
@@ -13,20 +16,6 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
-  List<Task> tasks = [
-    Task(
-      name: 'wow',
-      isDone: true,
-    ),
-    Task(
-      name: 'study',
-      isDone: false,
-    ),
-    Task(
-      name: 'sleep',
-      isDone: false,
-    ),
-  ];
 
   void updateTaskCompletion(){
     setState(() {
@@ -37,13 +26,13 @@ class _TasksScreenState extends State<TasksScreen> {
 
   void addTask(String newTaskName){
     setState(() {
-      tasks.add(Task(name: newTaskName, isDone: false));
+      Provider.of<TaskData>(context).tasks.add(Task(name: newTaskName, isDone: false));
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    int compleatedTask = tasks.where((task) => task.isDone).length;
+    int compleatedTask = Provider.of<TaskData>(context).tasks.where((task) => task.isDone).length;
 
     return Scaffold(
       backgroundColor: Color(0xFFFAF7F0),
@@ -78,14 +67,14 @@ class _TasksScreenState extends State<TasksScreen> {
                 height: 5.0,
               ),
               Text(
-                "(${compleatedTask}/${tasks.length}) Compleated Task",
+                "(${compleatedTask}/${Provider.of<TaskData>(context).tasks.length}) Compleated Task",
                 style: TextStyle(color: Colors.grey, fontSize: 16.0),
               ),
               SizedBox(
                 height: 40.0,
               ),
               TaskList(
-                tasks: tasks,
+                // tasks: Provider.of<TaskData>(context).tasks,
                   updateTaskCompletion: updateTaskCompletion,
               ),
               AddTaskButton(onPressed: () {
