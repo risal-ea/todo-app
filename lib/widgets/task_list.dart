@@ -20,7 +20,50 @@ class TaskList extends StatelessWidget {
               Provider.of<TaskData>(context, listen: false).notifyListeners();
             },
             longPressCallback: () {
-              Provider.of<TaskData>(context, listen: false).deleteTask(index);
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      backgroundColor: Color(0xFFFAF7F0),
+                      title: Text(
+                        'Delete task',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      content: Text(
+                        'Are you sure you want to delete this task',
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      ),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text(
+                            'Cancel',
+                            style: TextStyle(
+                                color: Color(0xFFB17457),
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Provider.of<TaskData>(context, listen: false)
+                                .deleteTask(index);
+                            Navigator.of(context).pop();
+                          },
+                          child: Text(
+                            'Delete',
+                            style: TextStyle(
+                                color: Color(0xFFB17457),
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        )
+                      ],
+                    );
+                  });
+              // Provider.of<TaskData>(context, listen: false).deleteTask(index);
             },
           );
         },
