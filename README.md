@@ -1,6 +1,6 @@
 # ToDo App
 
-A simple and intuitive ToDo app built with Flutter and Provider for state management. This app allows users to create, delete, and manage tasks efficiently. The interface is designed to be user-friendly and visually appealing.
+An intuitive ToDo app built with Flutter and Provider for state management. This app allows users to create, delete, and manage tasks efficiently. The interface is designed to be user-friendly and visually appealing.
 
 ## Features
 
