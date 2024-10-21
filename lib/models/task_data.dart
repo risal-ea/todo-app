@@ -16,4 +16,19 @@ class TaskData extends ChangeNotifier {
       isDone: false,
     ),
   ];
+
+  void addTask(String taskName) {
+    tasks.add(Task(name: taskName));
+    notifyListeners(); // Notify listeners to rebuild UI
+  }
+
+  int get completedTaskCount {
+    return tasks.where((task) => task.isDone).length;
+  }
+
+  void deleteTask(int index) {
+    tasks.removeAt(index); // Remove the task at the specified index
+    notifyListeners();     // Notify listeners to update the UI
+  }
+
 }
